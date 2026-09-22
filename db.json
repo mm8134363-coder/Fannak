@@ -1,0 +1,30 @@
+{
+  "users": [],
+  "rooms": [
+    {
+      "id": "general",
+      "name": "الغرفة العامة",
+      "description": "دردشة وترفيه للجميع",
+      "online": 0
+    },
+    {
+      "id": "games",
+      "name": "الألعاب",
+      "description": "تحديات ومسابقات",
+      "online": 0
+    },
+    {
+      "id": "music",
+      "name": "الموسيقى",
+      "description": "جلسات واستماع",
+      "online": 0
+    }
+  ],
+  "announcements": [
+    {
+      "id": 1,
+      "title": "أهلاً بك في التطبيق 🎉",
+      "body": "ابدأ غرفة أو انضم إلى أصدقائك."
+    }
+  ]
+}
