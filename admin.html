@@ -1,0 +1,6 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>لوحة تحكم فَنّك</title><link rel="stylesheet" href="/admin.css"></head><body>
+<div id="login" class="box"><h1>🛠️ لوحة تحكم فَنّك</h1><input id="email" placeholder="البريد"><input id="pass" type="password" placeholder="كلمة المرور"><button onclick="login()">دخول</button><p id="err"></p></div>
+<div id="app" hidden><header><b>لوحة التحكم</b><button onclick="logout()">خروج</button></header><main><div class="stats" id="stats"></div>
+<section><h2>الغرف</h2><form onsubmit="addRoom(event)"><input id="rname" placeholder="اسم الغرفة" required><input id="rdesc" placeholder="الوصف"><button>إضافة</button></form><div id="rooms"></div></section>
+<section><h2>إعلان</h2><form onsubmit="addAnnouncement(event)"><input id="atitle" placeholder="العنوان" required><textarea id="abody" placeholder="النص"></textarea><button>نشر</button></form></section>
+<section><h2>المستخدمون</h2><div id="users"></div></section></main></div><script src="/admin.js"></script></body></html>

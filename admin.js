@@ -1,0 +1,9 @@
+let t=localStorage.getItem("admin_token");const $=x=>document.getElementById(x);
+async function api(u,o={}){o.headers={...(o.headers||{}),"Content-Type":"application/json",...(t?{Authorization:"Bearer "+t}:{})};let r=await fetch(u,o),d=await r.json();if(!r.ok)throw Error(d.error||"خطأ");return d}
+async function login(){try{let d=await api("/api/login",{method:"POST",body:JSON.stringify({email:$("email").value,password:$("pass").value})});if(d.user.role!=="admin")throw Error("هذا الحساب ليس مشرفاً");t=d.token;localStorage.setItem("admin_token",t);load()}catch(e){$("err").textContent=e.message}}
+async function load(){try{let s=await api("/api/admin/stats"),r=await api("/api/rooms"),u=await api("/api/admin/users");$("login").hidden=true;$("app").hidden=false;$("stats").innerHTML=`<div class="stat">المستخدمون<br><b>${s.users}</b></div><div class="stat">الغرف<br><b>${s.rooms}</b></div><div class="stat">الإعلانات<br><b>${s.announcements}</b></div>`;$("rooms").innerHTML=r.map(x=>`<div class="item"><span>${x.name}</span><button class="danger" onclick="delRoom('${x.id}')">حذف</button></div>`).join("");$("users").innerHTML=u.map(x=>`<div class="item"><span>${x.name} — ${x.email}</span><small>${x.role}</small></div>`).join("")}catch(e){logout()}}
+async function addRoom(e){e.preventDefault();await api("/api/rooms",{method:"POST",body:JSON.stringify({name:$("rname").value,description:$("rdesc").value})});e.target.reset();load()}
+async function delRoom(id){await api("/api/rooms/"+id,{method:"DELETE"});load()}
+async function addAnnouncement(e){e.preventDefault();await api("/api/announcements",{method:"POST",body:JSON.stringify({title:$("atitle").value,body:$("abody").value})});e.target.reset();load()}
+function logout(){localStorage.removeItem("admin_token");location.reload()}
+if(t)load();

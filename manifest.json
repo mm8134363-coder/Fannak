@@ -1,0 +1,11 @@
+{
+  "name":"فَنّك - تطبيق ترفيهي",
+  "short_name":"فَنّك",
+  "start_url":"/",
+  "display":"standalone",
+  "background_color":"#071d22",
+  "theme_color":"#0b6b5c",
+  "lang":"ar",
+  "dir":"rtl",
+  "icons":[]
+}
